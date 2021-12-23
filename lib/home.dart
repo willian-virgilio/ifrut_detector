@@ -98,30 +98,7 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 50.0,
               ),
-              Center(
-                child: _loading ? Container(
-                  width: 300,
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset('assets/cat.png'),
-                      SizedBox(
-                        height: 50.0,
-                      )
-                    ],
-                  ),
-                ):Container(child: Column(children: <Widget>[
-                  Container(
-                    height:250,
-                    child: Image.file(_image)
-                  ),
-                  SizedBox(
-                    height: 20,
-                    ),
-                    _output != null ? Text('${_output[0]['label']}',style: TextStyle(color: Colors.white,fontSize: 20)) :Container(),
-                ],)
-                ),
-                ),
-            ],
+              
               Container(
                   width: MediaQuery.of(context).size.width,
                   child: Column(
@@ -166,6 +143,33 @@ class _HomeState extends State<Home> {
                     ],
                   )
                   ),
+              
+              
+              Center(
+                child: _loading ? Container(
+                  width: 300,
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset('assets/cat.png'),
+                      SizedBox(
+                        height: 50.0,
+                      )
+                    ],
+                  ),
+                ):Container(child: Column(children: <Widget>[
+                  Container(
+                    height:250,
+                    child: Image.file(_image)
+                  ),
+                  SizedBox(
+                    height: 20,
+                    ),
+                    _output != null ? Text('${_output[0]['label']}',style: TextStyle(color: Colors.white,fontSize: 20)) :Container(),
+                ],)
+                ),
+                ),
+            ],
+              
             ],
           ),
         )

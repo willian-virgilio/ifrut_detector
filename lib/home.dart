@@ -12,7 +12,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final picker = ImagePicker();
-  File? _image;
+  late File _image;
+  bool _loading = false;
+  List _output = [''];
 
   pickImage() async {
     var image = await picker.getImage(source: ImageSource.camera);
@@ -21,6 +23,7 @@ class _HomeState extends State<Home> {
     setState(() {
       _image = File(image.path);
     });
+    classifyImage(_image);
   }
 
   pickGallaryImage() async {
@@ -30,6 +33,42 @@ class _HomeState extends State<Home> {
     setState(() {
       _image = File(image.path);
     });
+    classifyImage(_image);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loading = true;
+    loadModel().then((value) {});
+  }
+
+  @override
+  void dispose() {
+    Tflite.close();
+    super.dispose();
+  }
+
+  classifyImage(File image) async {
+    var output = await Tflite.runModelOnImage(
+      path: image.path,
+      numResults: 2,
+      threshold: 0.5,
+      imageMean: 127.5,
+      imageStd: 127.5,
+    );
+
+    setState(() {
+      _loading = false;
+      if (output != null) {
+        _output = (output).toList();
+      }
+    });
+  }
+
+  loadModel() async {
+    await Tflite.loadModel(
+        model: 'assets/model_unquant.tflite', labels: 'assets/labels.txt');
   }
 
   @override
@@ -60,7 +99,7 @@ class _HomeState extends State<Home> {
                 height: 50.0,
               ),
               Center(
-                child: Container(
+                child: _loading ? Container(
                   width: 300,
                   child: Column(
                     children: <Widget>[
@@ -70,8 +109,19 @@ class _HomeState extends State<Home> {
                       )
                     ],
                   ),
+                ):Container(child: Column(children: <Widget>[
+                  Container(
+                    height:250,
+                    child: Image.file(_image)
+                  ),
+                  SizedBox(
+                    height: 20,
+                    ),
+                    _output != null ? Text('${_output[0]['label']}',style: TextStyle(color: Colors.white,fontSize: 20)) :Container(),
+                ],)
                 ),
-              ),
+                ),
+            ],
               Container(
                   width: MediaQuery.of(context).size.width,
                   child: Column(
@@ -93,6 +143,9 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
                       GestureDetector(
                         onTap: pickGallaryImage,
                         child: Container(
@@ -111,9 +164,11 @@ class _HomeState extends State<Home> {
                         ),
                       )
                     ],
-                  ))
+                  )
+                  ),
             ],
           ),
-        ));
+        )
+        );
   }
 }

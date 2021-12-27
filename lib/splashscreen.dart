@@ -25,10 +25,14 @@ class _MySlashState extends State<MySlash> {
           ),
         ),
       ),
-      image: Image.asset('assets/cat.png'),
+      image: Image.asset('assets/flower.png'),
+      gradientBackground: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: [0.004, 1],
+          colors: [Color(0xFFa8e063), Color(0xFF56ab2f)]),
       photoSize: 50.0,
-      backgroundColor: Colors.black12,
-      loaderColor: Color(0xFFEEDA28),
+      loaderColor: Colors.white,
     );
   }
 }

@@ -16,7 +16,7 @@ class _MySlashState extends State<MySlash> {
       seconds: 2,
       navigateAfterSeconds: Home(),
       title: Text(
-        'Dog and Cat',
+        'Flower Detector',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 30,

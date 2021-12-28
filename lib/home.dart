@@ -73,6 +73,32 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            stops: [0.004, 1],
+            colors: [
+              Color(0xFFa8e063),
+              Color(0xFF56ab2f),
+            ],
+          ),
+        ),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 50,
+              ),
+              Text("Detect  Flowers")
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

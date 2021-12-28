@@ -94,7 +94,34 @@ class _HomeState extends State<Home> {
               SizedBox(
                 height: 50,
               ),
-              Text("Detect  Flowers")
+              Text(
+                "Detect  Flowers",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 28),
+              ),
+              Text(
+                "Custon TensotFlow CNN",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              ),
+              SizedBox(height: 40),
+              Container(
+                padding: EdgeInsets.all(30),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7),
+                  ],
+                ),
+              )
             ],
           ),
         ),

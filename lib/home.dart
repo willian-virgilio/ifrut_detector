@@ -193,7 +193,7 @@ class _HomeState extends State<Home> {
                             height: 5,
                           ),
                           GestureDetector(
-                            onTap: pickImage,
+                            onTap: pickGallaryImage,
                             child: Container(
                               width: MediaQuery.of(context).size.width - 180,
                               alignment: Alignment.center,

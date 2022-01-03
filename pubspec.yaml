@@ -1,5 +1,5 @@
-name: catanddogpredictor
-description: A new Flutter project.
+name: flowers detector
+description: Project t.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -46,7 +46,7 @@ dependencies:
 
   #Icons on Flutter apps
 flutter_icons:
-  image_path: 'icon/cat.png'
+  image_path: 'assets/flower.png'
   android: true
   ios: true
   # optionally, as transparency is not allowed on app store

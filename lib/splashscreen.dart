@@ -1,4 +1,4 @@
-import 'package:flowersdetector/home.dart';
+import 'package:ifruit/home.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
 
@@ -16,7 +16,7 @@ class _MySlashState extends State<MySlash> {
       seconds: 2,
       navigateAfterSeconds: Home(),
       title: Text(
-        'Flower Detector',
+        'Fruit Detector',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 30,
